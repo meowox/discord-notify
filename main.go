@@ -117,7 +117,8 @@ func shouldShowNotification(s *discordgo.Session, m *discordgo.Message) bool {
 		fmt.Println("supressEveryone:\t", ugs.SupressEveryone)
 		fmt.Println()
 		fmt.Println("mentionsRole:\t", mentionsRole)
-		fmt.Println("supressRoles:\t", ugs.SupressRoles)
+		//supressRoles not a thing anymore in discord-go?
+		//fmt.Println("supressRoles:\t", ugs.SupressRoles)
 		fmt.Println()
 		fmt.Println("mentionsMe:\t", mentionsMe)
 		fmt.Println("----")
@@ -137,7 +138,12 @@ func shouldShowNotification(s *discordgo.Session, m *discordgo.Message) bool {
 	if mentionsEveryone && !ugs.SupressEveryone {
 		return true
 	}
+	/* SupressRoles doesnt work anymore
 	if mentionsRole && !ugs.SupressRoles {
+		return true
+	}
+	*/
+	if mentionsRole {
 		return true
 	}
 	if mentionsMe {
